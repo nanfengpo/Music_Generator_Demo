@@ -3,6 +3,11 @@
 ##Overview
 Use TensorFlow to generate short sequences of music with a [Restricted Boltzmann Machine](http://deeplearning4j.org/restrictedboltzmannmachine.html). This is the code for [Generate Music in TensorFlow]() on YouTube. 
 
+##注
+主要文件是rbm_chords.py
+主要工具是rbm，没有用到CNN，RNN！！！
+
+
 ##Dependencies
 
 * python2.7.12
