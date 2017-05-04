@@ -1,3 +1,4 @@
+# coding:utf-8
 #This file is heavily based on Daniel Johnson's midi manipulation code in https://github.com/hexahedria/biaxial-rnn-music-composition
 
 import numpy as np
@@ -114,7 +115,10 @@ with tf.Session() as sess:
             #The songs are stored in a time x notes format. The size of each song is timesteps_in_song x 2*note_range
             #Here we reshape the songs so that each training example is a vector with num_timesteps x 2*note_range elements
             song = np.array(song)
-            song = song[:np.floor(song.shape[0]/num_timesteps)*num_timesteps]
+            # print song.size
+            # print np.floor(song.shape[0]/num_timesteps)*num_timesteps
+            # np.floor(song.shape[0]/num_timesteps)*num_timesteps得到的是带小数点的整数，必须通过int强制转换类型
+            song = song[:int(np.floor(song.shape[0]/num_timesteps)*num_timesteps)]
             song = np.reshape(song, [song.shape[0]/num_timesteps, song.shape[1]*num_timesteps])
             #Train the RBM on batch_size examples at a time
             for i in range(1, len(song), batch_size): 
